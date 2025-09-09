@@ -20,3 +20,14 @@ This will be enforced by pre-commit hooks.
 - **refactor**: `refactor: simplify user session management`
 - **test**: `test: add unit tests for the payment calculator`
 - **chore**: `chore: upgrade dependency to new version`
+
+## Third-Party & Vendor Workflow
+
+For projects developed by third parties or external contractors, a three-branch scheme (`develop` -> `qa` -> `main`) is mandatory.
+
+- **Vendor Responsibility**: External developers will perform all their work in feature branches, merging into `develop`. When a feature set is ready for review, they will merge all changes into the `qa` branch. The `qa` branch serves as the official handover point for all deliverables.
+- **FIBEX Responsibility**: The internal FIBEX team is solely responsible for reviewing and approving the code on the `qa` branch. After successful validation, **only the FIBEX team is permitted to merge changes from `qa` to `main`**. This ensures a strict quality and security gate before any code reaches production.
+
+## Future Considerations
+
+As our development process matures, we may evolve our branching model to include a dedicated `qa` branch. This would create a flow such as `develop` -> `qa` -> `main`, allowing for a more robust testing and stabilization phase before code is released to production. This will be evaluated as team size and project complexity grow.
