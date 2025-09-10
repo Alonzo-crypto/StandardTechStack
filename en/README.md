@@ -5,6 +5,7 @@ Welcome to the central hub for all technology standards and documentation at FIB
 ## Table of Contents
 
 ### Core Principles
+
 - [Guiding Principles](./principles.md)
 - [Git & Version Control](./version-control.md)
 - [API Design Specifications](./api-design.md)
@@ -13,13 +14,16 @@ Welcome to the central hub for all technology standards and documentation at FIB
 ### Technology Stacks
 
 #### Web Frontend
+
 - [Angular](./frontend/angular.md)
 - [React](./frontend/react.md)
 
 #### Mobile
+
 - [Flutter](./mobile/flutter.md)
 
 #### Backend
+
 - [Node.js](./backend/nodejs.md)
 - [Python](./backend/python.md)
 

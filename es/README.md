@@ -5,6 +5,7 @@ Bienvenido al hub central para todos los estándares y documentación tecnológi
 ## Tabla de Contenidos
 
 ### Principios Fundamentales
+
 - [Principios Rectores](./principles.md)
 - [Git y Control de Versiones](./version-control.md)
 - [Especificaciones de Diseño de API](./api-design.md)
@@ -13,13 +14,16 @@ Bienvenido al hub central para todos los estándares y documentación tecnológi
 ### Stacks Tecnológicos
 
 #### Frontend Web
+
 - [Angular](./frontend/angular.md)
 - [React](./frontend/react.md)
 
 #### Móvil
+
 - [Flutter](./mobile/flutter.md)
 
 #### Backend
+
 - [Node.js](./backend/nodejs.md)
 - [Python](./backend/python.md)
 

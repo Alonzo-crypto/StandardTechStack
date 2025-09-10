@@ -15,6 +15,6 @@
 
 ## Convenciones Generales
 
-- **Idioma en el Código**: Todo el código, incluyendo nombres de variables, funciones, comentarios y documentación, debe estar en **Inglés**.
+- **Idioma en el Código**: Todo el código, incluyendo nombres de variables, funciones, comentarios y documentación, debe estar en **Español** (Comentarios) e **Inglés** (Proveedores principalmente). El idioma principal sería **Inglés**.
 - **Formateo**: El código debe ser formateado usando [Prettier](https://prettier.io/) con una configuración compartida. Un hook de pre-commit debe forzar esto.
 - **Linting**: El código debe pasar las verificaciones de linting usando [ESLint](https://eslint.org/) (para TS) o un linter similar para otros lenguajes, con una configuración compartida.
