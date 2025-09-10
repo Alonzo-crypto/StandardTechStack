@@ -4,7 +4,22 @@ Este documento cubre los estándares relacionados con el despliegue, la contener
 
 ## Plataforma de Despliegue
 
-- **Estándar**: Todas las nuevas aplicaciones deben diseñarse para ser desplegadas en los principales proveedores de nube como **AWS, Azure o Google Cloud**.
+TODO: Uso de Railway, Dokploy
+TODO: Gestión de dominios
+TODO: 
+TODO: Autenticación centralizada, externa e interna, una clave todas las apps.
+TODO: Bases de datos, redis, mongodb, postgres, mysql
+TODO: Funciones
+TODO: JWT, cifrado de la clave
+TODO: Argon2??
+VPS en servidores físicos.
+
+### Caracas
+
+
+### Valencia
+
+- **Estándar**: Todas las nuevas aplicaciones deben diseñarse para ser desplegadas en el proveedor de nube **Railway**.
 - **Serverless**: Para los servicios aplicables (ej., APIs, funciones pequeñas), se prefiere el despliegue serverless para reducir la carga operativa.
 
 ## Contenerización
