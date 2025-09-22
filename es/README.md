@@ -10,6 +10,7 @@ Bienvenido al hub central para todos los estándares y documentación tecnológi
 - [Git y Control de Versiones](./version-control.md)
 - [Especificaciones de Diseño de API](./api-design.md)
 - [Infraestructura y DevOps](./devops.md)
+- [Bases de Datos](./databases.md)
 
 ### Stacks Tecnológicos
 
