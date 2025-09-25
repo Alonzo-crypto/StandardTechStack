@@ -85,21 +85,33 @@ async function directoryListing(rootDir: string, dirPath: string, urlPath: strin
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Index of ${rel}</title>
     <style>
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; padding: 16px; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+      header { padding: 12px 16px; background: #0f172a; color: #fff; display: flex; align-items: center; gap: 12px; }
+      header .logo { height: 28px; width: auto; display: inline-block; }
+      header .brand { display: inline-flex; align-items: center; gap: 12px; justify-content: space-between; width: 100%; }
+      main { padding: 16px; max-width: 960px; margin: 0 auto; }
       a { text-decoration: none; }
       ul { list-style: none; padding-left: 0; }
       li { margin: 6px 0; }
-      .crumbs { margin-bottom: 12px; }
+      .crumbs { margin: 12px 0; }
       .crumbs a { color: #0366d6; }
       code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
     </style>
   </head>
   <body>
-    <div class="crumbs">${breadcrumb(urlPath)}</div>
-    <h1>Index of ${rel}</h1>
-    <ul>
-      ${items.map((i) => `<li><a href="${encodeURI(i.href)}">${escapeHtml(i.name)}</a></li>`).join('\n      ')}
-    </ul>
+    <header>
+      <span class="brand">
+        <img class="logo" src="/assets/LOGOFIBEXHORIZONTALPOSITIVO.png" alt="FIBEX Telecom"/>
+        <strong>StandardTechStack</strong>
+      </span>
+    </header>
+    <main>
+      <div class="crumbs">${breadcrumb(urlPath)}</div>
+      <h1>Index of ${rel}</h1>
+      <ul>
+        ${items.map((i) => `<li><a href="${encodeURI(i.href)}">${escapeHtml(i.name)}</a></li>`).join('\n        ')}
+      </ul>
+    </main>
   </body>
   </html>`;
 }
@@ -128,7 +140,9 @@ function wrapHtml(title: string, bodyHtml: string): string {
     <title>${escapeHtml(title)}</title>
     <style>
       body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
-      header { padding: 12px 16px; background: #0f172a; color: #fff; }
+      header { padding: 12px 16px; background: #0f172a; color: #fff; display: flex; align-items: center; gap: 12px; }
+      header .logo { height: 28px; width: auto; display: inline-block; }
+      header .brand { display: inline-flex; align-items: center; gap: 12px; justify-content: space-between; width: 100%; }
       main { padding: 16px; max-width: 960px; margin: 0 auto; }
       pre, code { background: #0b1020; color: #e2e8f0; padding: 2px 4px; border-radius: 4px; }
       pre { padding: 12px; overflow: auto; }
@@ -139,7 +153,12 @@ function wrapHtml(title: string, bodyHtml: string): string {
     </style>
   </head>
   <body>
-    <header><strong>${escapeHtml(title)}</strong></header>
+    <header>
+      <span class="brand">
+        <img class="logo" src="/assets/LOGOFIBEXHORIZONTALPOSITIVO.png" alt="FIBEX Telecom"/>
+        <strong>${escapeHtml(title)}</strong>
+      </span>
+    </header>
     <main>
       ${bodyHtml}
     </main>
