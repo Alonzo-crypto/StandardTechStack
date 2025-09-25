@@ -1,5 +1,7 @@
 # Stack Tecnológico de Angular
 
+NOTA IMPORTANTE: Este documento no es definitivo, está en revisión.
+
 Este documento describe los estándares y convenciones específicas para desarrollar aplicaciones web con Angular.
 
 ## Stack Principal

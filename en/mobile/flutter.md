@@ -1,5 +1,7 @@
 # Flutter Technology Stack
 
+IMPORTANT NOTE: This document is not final; it is under review.
+
 This document outlines the specific standards and conventions for developing mobile applications with Flutter.
 
 ## Core Stack

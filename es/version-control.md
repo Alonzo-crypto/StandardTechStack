@@ -3,7 +3,8 @@
 ## Modelo de Ramas
 
 El estándar es una versión simplificada de GitFlow:
-- **`main`**: Código listo para producción. Los pushes directos están prohibidos. Se fusiona solo desde `develop` a través de Pull Requests.
+- **`main`**: Código listo para producción. Los pushes directos están prohibidos. Se fusiona solo desde `qa` a través de Pull Requests.
+- **`qa`**: Código listo para aplicar pruebas de calidad. Los pushes directos están prohibidos. Se fusiona solo desde `develop` a través de Pull Requests.
 - **`develop`**: La rama principal de integración para funcionalidades. Todas las ramas de funcionalidades se fusionan en `develop`.
 - **`feat/feature-name`**: Ramas para desarrollar nuevas funcionalidades (ej., `feat/user-authentication`). Se crean a partir de `develop`.
 - **`fix/bug-name`**: Ramas para corregir errores (ej., `fix/login-button-bug`). Se crean a partir de `develop`.

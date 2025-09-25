@@ -1,5 +1,7 @@
 # Stack Tecnológico de Node.js
 
+NOTA IMPORTANTE: Este documento no es definitivo, está en revisión.
+
 Este documento describe los estándares y convenciones específicas para desarrollar servicios de backend con Node.js y TypeScript.
 
 ## Stack Principal

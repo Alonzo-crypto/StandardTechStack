@@ -11,6 +11,8 @@ Bienvenido al hub central para todos los estándares y documentación tecnológi
 - [Especificaciones de Diseño de API](./api-design.md)
 - [Infraestructura y DevOps](./devops.md)
 - [Bases de Datos](./databases.md)
+- [IA y Desarrollo con LLMs](./ai.md)
+- [Aseguramiento de la Calidad (QA)](./qa.md)
 
 ### Stacks Tecnológicos
 
@@ -18,6 +20,7 @@ Bienvenido al hub central para todos los estándares y documentación tecnológi
 
 - [Angular](./frontend/angular.md)
 - [React](./frontend/react.md)
+- [Next.js](./frontend/nextjs.md)
 
 #### Móvil
 

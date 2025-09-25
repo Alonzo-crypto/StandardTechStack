@@ -1,5 +1,7 @@
 # Node.js Technology Stack
 
+IMPORTANT NOTE: This document is not final; it is under review.
+
 This document outlines the specific standards and conventions for developing backend services with Node.js and TypeScript.
 
 ## Core Stack

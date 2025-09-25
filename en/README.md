@@ -11,6 +11,8 @@ Welcome to the central hub for all technology standards and documentation at FIB
 - [API Design Specifications](./api-design.md)
 - [Infrastructure & DevOps](./devops.md)
 - [Databases](./databases.md)
+- [AI & LLM Development](./ai.md)
+- [Quality Assurance (QA)](./qa.md)
 
 ### Technology Stacks
 
@@ -18,6 +20,7 @@ Welcome to the central hub for all technology standards and documentation at FIB
 
 - [Angular](./frontend/angular.md)
 - [React](./frontend/react.md)
+- [Next.js](./frontend/nextjs.md)
 
 #### Mobile
 
