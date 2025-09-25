@@ -58,3 +58,15 @@ pnpm run serve -- --dir .. --port 5173
 ```
 
 
+## Create a ZIP (excluding ignored files)
+
+Creates `releases/StandardTechStack-YYYYMMDD-HHMM.zip` using `.gitignore` rules plus additional defaults.
+
+```bash
+pnpm run zip
+
+# Or compile then run with Node
+pnpm run zip:node
+```
+
+

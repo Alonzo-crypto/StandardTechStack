@@ -9,11 +9,15 @@
   "scripts": {
     "concat": "ts-node -P ./tsconfig.json ./concat-docs.ts",
     "build": "tsc -P ./tsconfig.json",
-    "concat:node": "npm run build && node ./dist/concat-docs.js",
+    "concat:node": "pnpm run build && node ./dist/concat-docs.js",
     "serve": "ts-node -P ./tsconfig.json ./serve.ts",
-    "serve:node": "npm run build && node ./dist/serve.js"
+    "serve:node": "pnpm run build && node ./dist/serve.js",
+    "zip": "ts-node -P ./tsconfig.json ./make-zip.ts",
+    "zip:node": "pnpm run build && node ./dist/make-zip.js"
   },
   "dependencies": {
+    "archiver": "^7.0.1",
+    "ignore": "^5.3.2",
     "marked": "^12.0.2"
   },
   "devDependencies": {
