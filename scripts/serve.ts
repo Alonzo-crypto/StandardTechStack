@@ -87,9 +87,11 @@ async function directoryListing(rootDir: string, dirPath: string, urlPath: strin
     <style>
       body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
       header { padding: 12px 16px; background: #0f172a; color: #fff; display: flex; align-items: center; gap: 12px; }
-      header .logo { height: 28px; width: auto; display: inline-block; }
-      header .brand { display: inline-flex; align-items: center; gap: 12px; justify-content: space-between; width: 100%; }
-      main { padding: 16px; max-width: 960px; margin: 0 auto; }
+      header a.logo { display: inline-flex; align-items: center; }
+      header img.logo { height: 28px; width: auto; display: inline-block; }
+      header .title { margin-left: auto; font-weight: 700; }
+      header .nav a { color: #fff; margin-left: 12px; }
+      main { padding: 16px; margin: 0 auto; }
       a { text-decoration: none; }
       ul { list-style: none; padding-left: 0; }
       li { margin: 6px 0; }
@@ -100,10 +102,12 @@ async function directoryListing(rootDir: string, dirPath: string, urlPath: strin
   </head>
   <body>
     <header>
-      <span class="brand">
-        <img class="logo" src="/assets/LOGOFIBEXHORIZONTALPOSITIVO.png" alt="FIBEX Telecom"/>
-        <strong>StandardTechStack</strong>
-      </span>
+      <a class="logo" href="/"><img class="logo" src="/assets/LOGOFIBEXHORIZONTALPOSITIVO.png" alt="FIBEX Telecom"/></a>
+      <span class="title">StandardTechStack</span>
+      <nav class="nav">
+        <a href="/es/README.md">Español</a>
+        <a href="/en/README.md">English</a>
+      </nav>
     </header>
     <main>
       <div class="crumbs">${breadcrumb(urlPath)}</div>
@@ -141,8 +145,10 @@ function wrapHtml(title: string, bodyHtml: string): string {
     <style>
       body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
       header { padding: 12px 16px; background: #0f172a; color: #fff; display: flex; align-items: center; gap: 12px; }
-      header .logo { height: 28px; width: auto; display: inline-block; }
-      header .brand { display: inline-flex; align-items: center; gap: 12px; justify-content: space-between; width: 100%; }
+      header a.logo { display: inline-flex; align-items: center; }
+      header img.logo { height: 28px; width: auto; display: inline-block; }
+      header .title { margin-left: auto; font-weight: 700; }
+      header .nav a { color: #fff; margin-left: 12px; }
       main { padding: 16px; max-width: 960px; margin: 0 auto; }
       pre, code { background: #0b1020; color: #e2e8f0; padding: 2px 4px; border-radius: 4px; }
       pre { padding: 12px; overflow: auto; }
@@ -154,10 +160,12 @@ function wrapHtml(title: string, bodyHtml: string): string {
   </head>
   <body>
     <header>
-      <span class="brand">
-        <img class="logo" src="/assets/LOGOFIBEXHORIZONTALPOSITIVO.png" alt="FIBEX Telecom"/>
-        <strong>${escapeHtml(title)}</strong>
-      </span>
+      <a class="logo" href="/"><img class="logo" src="/assets/LOGOFIBEXHORIZONTALPOSITIVO.png" alt="FIBEX Telecom"/></a>
+      <span class="title">${escapeHtml(title)}</span>
+      <nav class="nav">
+        <a href="/es/README.md">Español</a>
+        <a href="/en/README.md">English</a>
+      </nav>
     </header>
     <main>
       ${bodyHtml}

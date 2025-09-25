@@ -10,6 +10,18 @@ For new developments, AWS will be used for infrastructure deployment.
 
 TODO: Define the base architecture with the AWS cloud management provider and address project‑specific requirements.
 
+## Security
+
+TODO: Move this into its own dedicated section.
+
+- **Password security (Argon2)**:
+
+  - Standard: Argon2id with recommended parameters (e.g., memoryCost ≥ 64MB, timeCost 2–4, parallelism per CPU).
+  - Usage: include a unique per‑user `salt`, and encode parameters in the hash to enable future recalibration.
+  - Migration: upon authentication, detect legacy hashes (bcrypt/scrypt) and rehash with Argon2id after successful login.
+
+  TODO: Based on new developments, clearly define standards for password management.
+
 ### Caracas
 
 - **On‑prem VPS (physical servers)**: For workloads requiring local data residency or low latency in Caracas.
@@ -56,14 +68,6 @@ TODO: Define the base architecture with the AWS cloud management provider and ad
 ## Package Management
 
 - **Standard**: [pnpm](https://pnpm.io/) is the required package manager for all TypeScript/JavaScript projects to ensure efficient and deterministic dependency management.
-
-## Password security (Argon2)
-
-- Standard: Argon2id with recommended parameters (e.g., memoryCost ≥ 64MB, timeCost 2–4, parallelism per CPU).
-- Usage: include unique per‑user `salt` and encode parameters in the hash to enable future recalibration.
-- Migration: on successful login, detect legacy hashes (bcrypt/scrypt) and rehash with Argon2id.
-
-TODO: Based on new developments, clearly define standards for password management.
 
 ## Domain and IP management
 

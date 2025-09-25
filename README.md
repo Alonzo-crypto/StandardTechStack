@@ -24,3 +24,37 @@ Estos documentos son una referencia en constante evolución. Las tecnologías y 
 These documents are a constantly evolving reference. The technologies and standards described herein are mandatory. However, we understand that adaptations may be necessary to meet business requirements. Such adaptations, evolutions, or suggestions should be raised, discussed, and agreed upon to update the guidelines and standards described here before implementation. Frequently, the architecture described already provides solutions to typical company requirements, but these may not be widely known. The goal is to achieve agility through standardization and to ensure the maintenance and proper functioning of the platforms. Any ideas or suggestions in this direction are welcome.
 
 
+
+## Scripts
+
+Ver `./scripts/README.md` para más detalles.
+See `./scripts/README.md` for further details.
+
+### Inicio rápido (ES)
+
+1. Instalar y combinar documentos:
+   - `cd StandardTechStack/scripts`
+   - `pnpm i`
+   - `pnpm run concat`
+     - Salida: `../docs/StandardTechStack-en.md` y `../docs/StandardTechStack-es.md`
+
+2. Servir los documentos localmente (Markdown renderizado a HTML):
+   - `cd StandardTechStack/scripts`
+   - `pnpm i`
+   - `pnpm run serve -- --dir .. --port 5173`
+   - Abrir `http://localhost:5173/`
+
+### Quick start (EN)
+
+1. Install and build combined docs:
+   - `cd StandardTechStack/scripts`
+   - `pnpm i`
+   - `pnpm run concat`
+     - Outputs: `../docs/StandardTechStack-en.md` and `../docs/StandardTechStack-es.md`
+
+2. Serve docs locally (Markdown rendered as HTML):
+   - `cd StandardTechStack/scripts`
+   - `pnpm i`
+   - `pnpm run serve -- --dir ../docs --port 5173`
+   - Open `http://localhost:5173/`
+

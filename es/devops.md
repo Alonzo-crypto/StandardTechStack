@@ -10,6 +10,10 @@ Para los nuevos desarrollos, se va a utilizar AWS para el despliegue de la infra
 
 TODO: Definición de arquitectura base con el proveedor de gestión de la nube AWS y atender los requerimiento de cada proyecto específico.
 
+## Seguridad
+
+TODO: Mover esto a su propia sección.
+
 - **Seguridad de contraseñas (Argon2)**:
 
   - Estándar: Argon2id con parámetros recomendados (p. ej., memoryCost ≥ 64MB, timeCost 2–4, parallelism acorde a CPU).
