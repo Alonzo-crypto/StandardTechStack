@@ -9,7 +9,12 @@
   "scripts": {
     "concat": "ts-node -P ./tsconfig.json ./concat-docs.ts",
     "build": "tsc -P ./tsconfig.json",
-    "concat:node": "npm run build && node ./dist/concat-docs.js"
+    "concat:node": "npm run build && node ./dist/concat-docs.js",
+    "serve": "ts-node -P ./tsconfig.json ./serve.ts",
+    "serve:node": "npm run build && node ./dist/serve.js"
+  },
+  "dependencies": {
+    "marked": "^12.0.2"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",
