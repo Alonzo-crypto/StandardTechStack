@@ -1,0 +1,19 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Utility scripts for concatenating documentation",
+  "license": "ISC",
+  "author": "FIBEX",
+  "type": "commonjs",
+  "scripts": {
+    "concat": "ts-node -P ./tsconfig.json ./concat-docs.ts",
+    "build": "tsc -P ./tsconfig.json",
+    "concat:node": "npm run build && node ./dist/concat-docs.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
