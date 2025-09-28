@@ -2,6 +2,8 @@
 
 Este documento describe los estándares para diseñar y construir APIs RESTful en FIBEX.
 
+Antes de iniciar los desarrollos cada proveedor debe entregar la lista de servicios, end points a desarrollar con entradas, salidas, parámetros y reglas de validación de los parámetros para que FIBEX tenga oportunidad de validar que los estándares se siguen y el nombramiento sea el más apropiado y acorde.
+
 ## Principios
 
 - **Estilo**: Seguir los principios RESTful para todo el diseño de API.
