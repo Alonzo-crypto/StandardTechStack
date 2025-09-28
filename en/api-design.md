@@ -1,16 +1,20 @@
 # API Design Specifications
 
 This document outlines the standards for designing and building RESTful APIs at FIBEX.
+Before starting development, each vendor must deliver the list of services and endpoints to be developed with inputs, outputs, parameters, and parameter validation rules so that FIBEX can validate that the standards are followed and the naming is appropriate and consistent.
 
 ## Principles
+
 - **Style**: Follow RESTful principles for all API design.
 - **Specification**: Use the [OpenAPI 3.0 (Swagger)](https://swagger.io/specification/) standard to define and document APIs. This is mandatory for all new services.
 
 ## Naming Conventions
+
 - **Endpoints**: Use `kebab-case` and plural nouns for resources (e.g., `/user-profiles`, `/purchase-orders`).
 - **JSON Properties**: Use `camelCase` for all JSON object keys in requests and responses (e.g., `"userName": "john.doe"`).
 
 ## Versioning
+
 All APIs must be versioned. Versioning should be included in the URL path.
 - Example: `/api/v1/users`
 - Example: `/api/v2/users`
@@ -18,7 +22,7 @@ All APIs must be versioned. Versioning should be included in the URL path.
 ## Responses
 
 - **Status Codes**: Use standard HTTP status codes correctly (e.g., `200 OK`, `201 Created`, `204 No Content`, `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `409 Conflict`, `422 Unprocessable Entity`, `429 Too Many Requests`, `500 Internal Server Error`).
-- **Response Body**: JSON responses should have a consistent structure.
+- **Response Body**: All JSON responses must use a standard envelope.
 
 ### Status codes: usage guide
 
