@@ -2,6 +2,21 @@
 
 This document summarizes usage criteria and best practices for Redis, MongoDB, PostgreSQL, and MySQL.
 
+## General conventions and best practices
+
+The following rules apply to **all** databases used in the project:
+
+- **Column and field names in `snake_case`:** all column, field, and attribute names must be written in `snake_case` (lowercase words separated by underscores). Example: `new_clients`, `created_at`, `user_id`.
+- **Names in English:** all identifiers (columns, tables, collections, indexes, keys, etc.) must be in **English**. This ensures consistency and facilitates collaboration with tools, libraries, and international teams.
+- **Descriptive names without ambiguous abbreviations:** use clear names that express the purpose of the field. Prefer `invoice_total` over `inv_tot` or `total`.
+- **Avoid reserved words:** do not use SQL or engine reserved words as column or table names (e.g., `order`, `user`, `table`). If unavoidable, apply the appropriate escaping.
+- **Consistent data types:** define the most specific and appropriate data type for each field. Avoid storing numbers as text or dates as strings.
+- **Controlled nulls:** document and restrict the use of `NULL`; prefer explicit default values when it makes sense.
+- **Primary keys:** always define an explicit primary key. Prefer technical identifiers (UUID v4/v7 or serial/bigserial) over natural keys when data may change.
+- **Basic audit fields:** include `created_at` and `updated_at` fields with default values and automatic updates in all main tables/collections.
+- **Versioned migrations:** all schema changes must be performed through versioned migrations. Never modify the production schema manually.
+- **No secrets in plain text:** passwords, tokens, and sensitive data must be hashed or encrypted before being persisted.
+
 ## Redis
 
 - Recommended use cases: read/write cache, rate limiting, lightweight queues, distributed locks.
