@@ -2,6 +2,21 @@
 
 Las bases de datos que se utilizan actualmente en Fibex son Redis, MongoDB, PostgreSQL y MySQL.
 
+## Convenciones y mejores prácticas generales
+
+Las siguientes reglas aplican a **todas** las bases de datos utilizadas en el proyecto:
+
+- **Nomenclatura de columnas y campos en `snake_case`:** todos los nombres de columnas, campos y atributos deben escribirse en `snake_case` (palabras en minúsculas separadas por guion bajo). Ejemplo: `new_clients`, `created_at`, `user_id`.
+- **Nombres en inglés:** los identificadores (columnas, tablas, colecciones, índices, claves, etc.) deben estar en **inglés**. Esto garantiza consistencia y facilita la colaboración con herramientas, librerías y equipos internacionales.
+- **Nombres descriptivos y sin abreviaturas ambiguas:** usar nombres claros que expresen el propósito del campo. Preferir `invoice_total` sobre `inv_tot` o `total`.
+- **Evitar palabras reservadas:** no usar palabras reservadas de SQL u otros motores como nombres de columnas o tablas (p. ej., `order`, `user`, `table`). Si es inevitable, aplicar el escape correspondiente.
+- **Consistencia en tipos de datos:** definir el tipo de dato más específico y adecuado para cada campo. Evitar almacenar números como texto o fechas como cadenas.
+- **Valores nulos controlados:** documentar y restringir el uso de `NULL`; preferir valores por defecto explícitos cuando tenga sentido.
+- **Claves primarias:** definir siempre una clave primaria explícita. Preferir identificadores técnicos (UUID v4/v7 o serial/bigserial) sobre claves naturales cuando los datos puedan cambiar.
+- **Auditoría básica:** incluir en todas las tablas/colecciones principales los campos `created_at` y `updated_at` con valores por defecto y actualización automática.
+- **Migraciones versionadas:** todos los cambios de esquema deben realizarse a través de migraciones versionadas. Nunca modificar el esquema de producción de forma manual.
+- **No almacenar secretos en texto plano:** contraseñas, tokens y datos sensibles deben estar hasheados o cifrados antes de persistirse.
+
 ## Redis
 
 - Caso de uso recomendado: caché de lectura/escritura, rate limiting, colas ligeras, locks distribuidos.
