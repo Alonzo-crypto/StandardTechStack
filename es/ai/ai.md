@@ -2,6 +2,14 @@
 
 Este documento define estándares para construir funcionalidades con Modelos de Lenguaje (LLMs), usando OpenRouter para el enrutamiento de proveedores y Langfuse para observabilidad y evaluaciones.
 
+## Estándar vigente
+
+Este documento define el **estándar obligatorio** para construir funcionalidades con LLMs en Fibex Telecom.
+
+- **Cumplimiento**: obligatorio para cualquier integración de LLM en productos o procesos internos.
+- **Excepciones**: requieren justificación técnica, evaluación de riesgo (seguridad/privacidad/costo) y aprobación explícita del comité de arquitectura.
+- **Calidad (ISO/IEC 25010)**: toda implementación debe ser observable, evaluable y operable (tolerancia a fallos, control de costos, métricas y trazabilidad).
+
 ## Alcance
 
 - Usar OpenRouter como gateway por defecto para acceder a múltiples proveedores (Anthropic, OpenAI, Google, etc.).
@@ -10,6 +18,8 @@ Este documento define estándares para construir funcionalidades con Modelos de 
 
 NOTA IMPORTANTE:
 Cada proveedor debe considerar el modelo de IA más costo eficiente para cada tarea.
+
+Este criterio es obligatorio: toda selección de modelo debe justificarse en términos de costo/latencia/calidad y debe respetar los topes de presupuesto definidos por entorno.
 
 ## Enrutamiento de proveedores con OpenRouter
 
@@ -98,9 +108,45 @@ export async function generarTrazado({ userId, prompt }: { userId: string; promp
 - Usar allowlists en callbacks/webhooks y rotar claves regularmente.
 - Respetar retención de datos del proveedor; desactivar entrenamiento/retención cuando aplique.
 
-## TODO
+## Catálogo de modelos, fallbacks y control de costos (obligatorio)
 
-- Finalizar lista de modelos aprobados y fallbacks por caso de uso.
-- Definir topes de presupuesto y umbrales de alertas para gasto y errores.
+Niveles:
 
+- **Estándar**: automatizaciones internas, asistentes y flujos con impacto moderado.
+- **TELCO Crítico**: flujos con impacto operacional/regulatorio, atención a clientes con SLAs, o cualquier proceso que pueda degradar servicio/red.
 
+### Catálogo mínimo por caso de uso
+
+Cada caso de uso debe definir un modelo **primario** y al menos un **fallback**. La selección debe considerar latencia, costo y calidad, y debe ser compatible con los límites de presupuesto por entorno.
+
+| Caso de uso | Objetivo | Modelo primario (Estándar) | Fallback (Estándar) | Reglas TELCO Crítico |
+|---|---|---|---|---|
+| Clasificación/enrutamiento | Determinar intención, cola, tags | Modelo rápido y económico (baja latencia) | Modelo rápido alterno | Debe ser determinista (`temperature` baja), con timeouts estrictos y fallback inmediato |
+| Extracción estructurada | JSON tipado, validación | Modelo con buena obediencia a formato | Modelo alterno de formato | Validar contra esquema; si falla, reintentar 1 vez y degradar a flujo manual/colas |
+| Q&A con contexto (RAG) | Responder con base en documentos | Modelo equilibrado costo/calidad | Modelo rápido | Requerir citas/evidencia; bloquear respuestas sin fuentes en flujos críticos |
+| Redacción/resumen | Resumir tickets, PRs, incidencias | Modelo económico | Modelo económico alterno | Prohibido incluir PII; aplicar redacción antes del envío |
+| Generación de código | Asistencia al dev | Modelo de alta calidad bajo guardrails | Modelo alterno | No ejecutar acciones; sólo sugerir; revisión humana obligatoria |
+
+Notas operativas:
+
+- En `TELCO Crítico` se prohíbe elevar a modelos de alto costo sin aprobación explícita y sin evidencia de impacto.
+- La lista concreta de modelos (IDs exactos en OpenRouter) se mantiene en configuración por entorno/proyecto; el estándar exige **existencia** de primario/fallback y su justificación.
+
+### Límites de presupuesto y alertas
+
+Cada servicio debe definir presupuesto por entorno y umbrales de alertas.
+
+| Nivel | Presupuesto por solicitud | Presupuesto diario por servicio | Alertas |
+|---|---:|---:|---|
+| Estándar | Límite configurado por caso de uso (tokens) | Límite por entorno (dev/stage/qa/prod) | 70% (warning), 90% (critical), 100% (bloqueo) |
+| TELCO Crítico | Más estricto que Estándar (tokens) | Más estricto que Estándar | 50% (warning), 75% (critical), 90% (bloqueo) |
+
+### Timeouts, reintentos y degradación
+
+- Estándar: timeout por solicitud y reintentos con backoff exponencial; máximo 1 reintento ante 429/5xx.
+- TELCO Crítico: timeout más estricto; máximo 1 reintento; fallback inmediato; degradación a flujo alterno (p. ej., respuesta predefinida o cola manual) ante fallos.
+
+### Evaluaciones (evals) y aceptación
+
+- Estándar: registrar métricas de latencia/costo y una métrica de calidad por flujo.
+- TELCO Crítico: evals obligatorias en staging; criterios de aceptación definidos (precisión, tasa de alucinación, cumplimiento de formato) y revisados por QA.

@@ -1,5 +1,36 @@
 # Aseguramiento de la Calidad (QA)
 
+## Estándar vigente
+
+Este documento define el **estándar obligatorio** de QA para Fibex Telecom.
+
+- **Cumplimiento**: se aplica a todos los repositorios, servicios y aplicaciones, incluyendo trabajo de terceros.
+- **Excepciones**: cualquier relajación de umbrales o bypass de controles requiere justificación técnica y aprobación explícita.
+
+## Quality Gates (obligatorios)
+
+Los siguientes controles son **bloqueantes**: si fallan, el PR no se puede fusionar. Cada repositorio debe implementarlos con la herramienta equivalente de su stack.
+
+Niveles:
+
+- **Estándar**: productos internos o de impacto moderado.
+- **TELCO Crítico**: sistemas con SLA estricto, alta exposición, impacto operacional/regulatorio o criticidad de red.
+
+| Categoría | Gate | Estándar | TELCO Crítico | Bloquea merge |
+|---|---|---:|---:|:---:|
+| Estilo | Formateo automático | Sin diffs | Sin diffs | Sí |
+| Calidad | Lint | 0 errores | 0 errores | Sí |
+| Correctitud | Type-check (cuando aplique) | 0 errores | 0 errores | Sí |
+| Pruebas | Unit tests | Cobertura >= 80% global; 100% en código crítico | Cobertura >= 90% global; 100% en código crítico | Sí |
+| Pruebas | Integration tests | Flujos críticos cubiertos en CI | Flujos críticos + regresión de rutas críticas en CI | Sí |
+| Pruebas | E2E (cuando aplique) | Flujos críticos en `main`/release | Flujos críticos + regresión de rutas críticas en `main`/release | Sí |
+| Seguridad | Secret scanning | 0 hallazgos | 0 hallazgos | Sí |
+| Seguridad | Dependency scanning | 0 High/Critical sin excepción | 0 High/Critical sin excepción | Sí |
+| Seguridad | SAST | 0 hallazgos High sin excepción | 0 hallazgos Medium/High sin excepción | Sí |
+| Seguridad | DAST (apps expuestas) | 0 hallazgos High sin excepción | 0 hallazgos Medium/High sin excepción | Sí |
+| Supply chain | SBOM (cuando aplique) | Generada por release | Generada por release + preservada como artefacto | Sí |
+| Operación | Evidencia CI | Artefactos y reportes en PR/build | Artefactos, reportes y métricas de calidad en PR/build | Sí |
+
 En Fibex Telecom, el Aseguramiento de la Calidad (QA) es un pilar fundamental para garantizar que nuestros productos sean confiables, seguros y de alta calidad. Este documento establece los estándares completos de la industria para QA, incluyendo estrategias de prueba, herramientas automatizadas, análisis estático, integración continua y mejores prácticas. Siguiendo estos estándares, aseguramos la entrega de software robusto, minimizamos riesgos y promovemos una cultura de mejora continua.
 
 El QA abarca desde la prevención de defectos en el código hasta la validación exhaustiva en entornos de producción, integrando prácticas como TDD (Test-Driven Development), BDD (Behavior-Driven Development) y DevOps. Todos los equipos deben adoptar estos estándares para mantener la excelencia en nuestros desarrollos.
@@ -134,4 +165,6 @@ QA se integra plenamente en pipelines de CI/CD para feedback rápido.
 
 ## Consideraciones Finales
 
-
+- La calidad es un requisito no funcional y debe tratarse como un entregable: ninguna entrega se considera lista sin evidencia automatizada (tests, análisis estático, y resultados en CI/CD).
+- Los umbrales (cobertura, deuda técnica, tiempos de feedback) pueden endurecerse por criticidad del sistema; cualquier relajación requiere justificación técnica y aprobación.
+- Todas las decisiones de QA deben poder auditarse (artefactos de build, reportes, trazas y resultados), especialmente en sistemas con impacto TELCO.

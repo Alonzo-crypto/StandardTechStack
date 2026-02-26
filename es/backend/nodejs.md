@@ -1,6 +1,12 @@
 # Stack Tecnológico de Node.js
 
-NOTA IMPORTANTE: Este documento no es definitivo, está en revisión.
+## Estándar vigente
+
+Este documento define el **estándar obligatorio** para construir servicios backend con Node.js (TypeScript) en Fibex Telecom.
+
+- **Cumplimiento**: obligatorio para nuevos servicios y para cambios estructurales relevantes.
+- **Excepciones**: requieren justificación técnica, evaluación de riesgo y aprobación explícita del comité de arquitectura.
+- **Calidad (ISO/IEC 25010)**: el estándar se valida por CI/CD (lint, tests, build reproducible, seguridad de dependencias y contenedores).
 
 Este documento describe los estándares y convenciones específicas para desarrollar servicios de backend con Node.js y TypeScript.
 

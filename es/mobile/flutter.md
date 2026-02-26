@@ -1,8 +1,38 @@
 # Stack Tecnológico de Flutter
 
-NOTA IMPORTANTE: Este documento no es definitivo, está en revisión.
+## Estándar vigente
+
+Este documento define el **estándar obligatorio** para construir aplicaciones móviles con Flutter en Fibex Telecom.
+
+- **Cumplimiento**: obligatorio para nuevos productos móviles y para modernizaciones relevantes.
+- **Excepciones**: requieren justificación técnica, evaluación de riesgo y aprobación explícita del comité de arquitectura.
+- **Calidad (ISO/IEC 25010)**: se exige evidencia automatizada (tests, análisis estático) y controles de seguridad (dependencias y secretos) integrados al pipeline.
 
 Este documento describe los estándares y convenciones específicas para desarrollar aplicaciones móviles con Flutter.
+
+## Quality Gates (obligatorios)
+
+Los siguientes controles son **bloqueantes**: si fallan, el PR no se puede fusionar.
+
+Niveles:
+
+- **Estándar**: aplicaciones internas o de impacto moderado.
+- **TELCO Crítico**: apps con SLA estricto, alta exposición, impacto operacional/regulatorio o criticidad de red.
+
+| Control | Herramienta estándar | Estándar | TELCO Crítico | Bloquea merge |
+|---|---|---:|---:|:---:|
+| Formato | `dart format` | Sin diffs | Sin diffs | Sí |
+| Lint | `flutter analyze` | 0 errores | 0 errores | Sí |
+| Tests unit/widget | `flutter test` | Cobertura >= 80% global; 100% en código crítico | Cobertura >= 90% global; 100% en código crítico | Sí |
+| Tests de integración | `integration_test` | Flujos críticos en `main`/release | Flujos críticos + regresión en `main`/release | Sí |
+| Dependencias | `flutter pub outdated` + auditoría (Snyk si aplica) | 0 High/Critical sin excepción | 0 High/Critical sin excepción | Sí |
+| Secretos | Gitleaks (o equivalente) | 0 hallazgos | 0 hallazgos | Sí |
+
+## Seguridad (obligatorio)
+
+- Prohibido almacenar tokens o secretos en texto plano. Cualquier token persistente debe almacenarse con almacenamiento seguro del SO (Keychain/Keystore).
+- Network: exigir TLS; validar certificados según política del producto; prohibido deshabilitar validación TLS en builds no-locales.
+- Observabilidad: registrar eventos operativos sin PII; aplicar redacción y minimización de datos.
 
 ## Stack Principal
 - **Framework**: [Flutter](https://flutter.dev/)

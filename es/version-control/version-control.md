@@ -149,4 +149,4 @@ Esto facilita el seguimiento de releases y permite deployments automatizados.
 
 ## Consideraciones Futuras
 
-A medida que nuestro proceso de desarrollo madure, podríamos evolucionar nuestro modelo de ramas para incluir una rama `qa` dedicada. Esto crearía un flujo como `develop` -> `qa` -> `main`, permitiendo una fase de pruebas y estabilización más robusta antes de que el código sea liberado a producción. Esto se evaluará a medida que el tamaño del equipo y la complejidad del proyecto crezcan.
+A medida que nuestro proceso de desarrollo madure, podríamos evolucionar el modelo para incorporar ramas adicionales cuando aporten control sin incrementar fricción de forma injustificada (p. ej., `release/` para estabilización con fechas fijas, o `hotfix/` para correcciones urgentes en producción). Cualquier cambio al modelo de ramas debe ser aprobado por el comité de arquitectura y reflejado en los workflows de CI/CD.
