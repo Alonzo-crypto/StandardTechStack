@@ -6,13 +6,13 @@ Bienvenido al hub central para todos los estándares y documentación tecnológi
 
 ### Principios Fundamentales
 
-- [Principios Rectores](./principles.md)
-- [Git y Control de Versiones](./version-control.md)
-- [Especificaciones de Diseño de API](./api-design.md)
-- [Infraestructura y DevOps](./devops.md)
-- [Bases de Datos](./databases.md)
-- [IA y Desarrollo con LLMs](./ai.md)
-- [Aseguramiento de la Calidad (QA)](./qa.md)
+- [Principios Rectores](./principles/principles.md)
+- [Git y Control de Versiones](./version-control/version-control.md)
+- [Especificaciones de Diseño de API](./api-designs/api-design.md)
+- [Infraestructura y DevOps](./devops/devops.md)
+- [Bases de Datos](./bbdd/databases.md)
+- [IA y Desarrollo con LLMs](./ai/ai.md)
+- [Aseguramiento de la Calidad (QA)](./qa/qa.md)
 
 ### Stacks Tecnológicos
 

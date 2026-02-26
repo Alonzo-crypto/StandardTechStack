@@ -6,13 +6,13 @@ Welcome to the central hub for all technology standards and documentation at FIB
 
 ### Core Principles
 
-- [Guiding Principles](./principles.md)
-- [Git & Version Control](./version-control.md)
-- [API Design Specifications](./api-design.md)
-- [Infrastructure & DevOps](./devops.md)
-- [Databases](./databases.md)
-- [AI & LLM Development](./ai.md)
-- [Quality Assurance (QA)](./qa.md)
+- [Guiding Principles](./principles/principles.md)
+- [Git & Version Control](./version-control/version-control.md)
+- [API Design Specifications](./api-design/api-design.md)
+- [Infrastructure & DevOps](./devops/devops.md)
+- [Databases](./bbdd/databases.md)
+- [AI & LLM Development](./ai/ai.md)
+- [Quality Assurance (QA)](./qa/qa.md)
 
 ### Technology Stacks
 
