@@ -1,8 +1,37 @@
 # Flutter Technology Stack
 
-IMPORTANT NOTE: This document is not final; it is under review.
+## Effective standard
+
+This document defines the **mandatory standard** for building Flutter mobile applications at FIBEX.
+
+- **Compliance**: mandatory for new projects and for significant refactors/modernizations.
+- **Exceptions**: require technical justification, risk analysis, and explicit approval by the architecture committee.
+- **Quality (ISO/IEC 25010)**: quality must be proven with CI/CD evidence (format, analysis, tests, dependency security).
 
 This document outlines the specific standards and conventions for developing mobile applications with Flutter.
+
+## Quality Gates (mandatory)
+
+The following controls are **merge-blocking**: if they fail, the PR cannot be merged.
+
+Levels:
+
+- **Standard**: internal applications or moderate impact.
+- **TELCO Critical**: strict SLAs, high exposure, operational/regulatory impact, or network/service criticality.
+
+| Control | Standard tool | Standard | TELCO Critical | Blocks merge |
+|---|---|---:|---:|:---:|
+| Formatting | `dart format` | No diffs | No diffs | Yes |
+| Static analysis | `flutter analyze` | 0 errors | 0 errors | Yes |
+| Tests | `flutter test` / `integration_test` | Coverage >= 80% overall; 100% in critical code | Coverage >= 90% overall; 100% in critical code | Yes |
+| Dependencies | `dart pub outdated` + advisory scan (Snyk/Dependabot if available) | 0 High/Critical without exception | 0 High/Critical without exception | Yes |
+| Secrets | Gitleaks (or equivalent) | 0 findings | 0 findings | Yes |
+
+## Security & supply chain (mandatory)
+
+- Secrets management: forbidden in repo. Use per-environment variables/secure storage and a vault when applicable.
+- Mobile hardening: do not store tokens in plaintext; use secure storage; enforce TLS and certificate validation.
+- Dependencies: any new package must be justified (maintainability, community health, licensing, attack surface).
 
 ## Core Stack
 - **Framework**: [Flutter](https://flutter.dev/)

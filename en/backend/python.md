@@ -1,8 +1,41 @@
 # Python Technology Stack
 
-IMPORTANT NOTE: This document is not final; it is under review.
+## Effective standard
+
+This document defines the **mandatory standard** for building backend services with Python at FIBEX.
+
+- **Compliance**: mandatory for new services and for significant structural changes.
+- **Exceptions**: require technical justification, risk assessment, and explicit approval by the architecture committee.
+- **Quality (ISO/IEC 25010)**: CI/CD must enforce style, types, tests, and dependency security gates.
 
 This document outlines the specific standards and conventions for developing backend services with Python.
+
+## Quality Gates (mandatory)
+
+The following controls are **merge-blocking**: if they fail, the PR cannot be merged.
+
+Levels:
+
+- **Standard**: internal services or moderate impact.
+- **TELCO Critical**: strict SLAs, high exposure, operational/regulatory impact, or network/service criticality.
+
+| Control | Standard tool | Standard | TELCO Critical | Blocks merge |
+|---|---|---:|---:|:---:|
+| Formatting | Black | No diffs | No diffs | Yes |
+| Lint | Ruff (preferred) or Pylint | 0 errors | 0 errors | Yes |
+| Type-check | mypy | No errors | No errors | Yes |
+| Tests | Pytest | Coverage >= 80% overall; 100% in critical code | Coverage >= 90% overall; 100% in critical code | Yes |
+| Security (code) | Bandit | 0 High findings without exception | 0 Medium/High findings without exception | Yes |
+| Dependencies | pip-audit / Snyk / Dependabot | 0 High/Critical without exception | 0 High/Critical without exception | Yes |
+| Secrets | Gitleaks (or equivalent) | 0 findings | 0 findings | Yes |
+| Containers (if applicable) | Trivy | 0 High/Critical without exception | 0 High/Critical without exception | Yes |
+
+## Security & operations (mandatory)
+
+- Authentication/authorization: permissions are verified in backend (never trust the client). Audit critical endpoints.
+- Validation: all inputs must be validated with Pydantic; reject invalid payloads with semantic 4xx errors.
+- Observability: structured logs with propagated `traceId`; minimum metrics (latency, error rate, saturation) and alerts.
+- Performance: use async IO where applicable; avoid blocking calls in async routes; enforce connection pool limits.
 
 ## Core Stack
 - **Language**: [Python](https://www.python.org/)

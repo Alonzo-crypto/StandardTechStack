@@ -1,8 +1,40 @@
 # React Technology Stack
 
-IMPORTANT NOTE: This document is not final; it is under review.
+## Effective standard
+
+This document defines the **mandatory standard** for building React web applications at FIBEX.
+
+- **Compliance**: mandatory for new projects and for significant refactors/modernizations.
+- **Exceptions**: require technical justification and explicit approval by the architecture committee.
+- **Quality (ISO/IEC 25010)**: quality level must be proven with automated CI/CD evidence (lint, tests, static analysis, dependency security).
 
 This document outlines the specific standards and conventions for developing web applications with React.
+
+## Quality Gates (mandatory)
+
+The following controls are **merge-blocking**: if they fail, the PR cannot be merged.
+
+Levels:
+
+- **Standard**: internal applications or moderate impact.
+- **TELCO Critical**: strict SLAs, high exposure, operational/regulatory impact, or network/service criticality.
+
+| Control | Standard tool | Standard | TELCO Critical | Blocks merge |
+|---|---|---:|---:|:---:|
+| Formatting | Prettier | No diffs | No diffs | Yes |
+| Lint | ESLint | 0 errors | 0 errors | Yes |
+| Type-check | TypeScript | `strict: true` (no errors) | `strict: true` (no errors) | Yes |
+| Unit/Integration tests | Jest + Testing Library | Coverage >= 80% overall; 100% in critical code | Coverage >= 90% overall; 100% in critical code | Yes |
+| E2E | Cypress | Critical flows on `main`/release | Critical flows + critical-route regression on `main`/release | Yes |
+| Dependencies | `npm audit` / Snyk / Dependabot | 0 High/Critical without exception | 0 High/Critical without exception | Yes |
+| Secrets | Gitleaks (or equivalent) | 0 findings | 0 findings | Yes |
+| Performance (web) | Lighthouse CI | Defined budget met | Stricter budgets on critical routes + CI monitoring | Yes |
+
+## Security & supply chain (mandatory)
+
+- Secrets management: forbidden in repo. Use per-environment variables and a vault when applicable.
+- Dependencies: any new library requires justification (maintainability, community health, licensing, attack surface).
+- UI components: standardize accessibility (WCAG 2.1 AA). Components must expose correct focus and aria states.
 
 ## Core Stack
 - **Framework**: [React](https://react.dev/) (v19 with [Vite](https://vitejs.dev/) v6, or v18 with Vite v5)

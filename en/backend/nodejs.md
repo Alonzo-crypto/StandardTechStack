@@ -1,8 +1,41 @@
 # Node.js Technology Stack
 
-IMPORTANT NOTE: This document is not final; it is under review.
+## Effective standard
+
+This document defines the **mandatory standard** for building backend services with Node.js (TypeScript) at FIBEX.
+
+- **Compliance**: mandatory for new services and for significant structural changes.
+- **Exceptions**: require technical justification, risk assessment, and explicit approval by the architecture committee.
+- **Quality (ISO/IEC 25010)**: validated via CI/CD (lint, tests, reproducible build, dependency and container security).
 
 This document outlines the specific standards and conventions for developing backend services with Node.js and TypeScript.
+
+## Quality Gates (mandatory)
+
+The following controls are **merge-blocking**: if they fail, the PR cannot be merged.
+
+Levels:
+
+- **Standard**: internal services or moderate impact.
+- **TELCO Critical**: strict SLAs, high exposure, operational/regulatory impact, or network/service criticality.
+
+| Control | Standard tool | Standard | TELCO Critical | Blocks merge |
+|---|---|---:|---:|:---:|
+| Formatting | Prettier | No diffs | No diffs | Yes |
+| Lint | ESLint | 0 errors | 0 errors | Yes |
+| Type-check | TypeScript | `strict: true` (no errors) | `strict: true` (no errors) | Yes |
+| Tests | Jest (+ Supertest for HTTP) | Coverage >= 80% overall; 100% in critical code | Coverage >= 90% overall; 100% in critical code | Yes |
+| SAST (recommended baseline) | SonarQube/Semgrep (or equivalent) | 0 High findings without exception | 0 Medium/High findings without exception | Yes |
+| Dependencies | `npm audit` / Snyk / Dependabot | 0 High/Critical without exception | 0 High/Critical without exception | Yes |
+| Secrets | Gitleaks (or equivalent) | 0 findings | 0 findings | Yes |
+| Containers (if applicable) | Trivy | 0 High/Critical without exception | 0 High/Critical without exception | Yes |
+
+## Security & supply chain (mandatory)
+
+- Secrets management: forbidden in repo. Use per-environment variables and a vault when applicable.
+- Authentication/authorization: enforce on backend/gateway; never rely on frontend checks.
+- Dependency hygiene: justify new dependencies; pin versions; keep lockfiles committed.
+- Build provenance: releases must be built in CI; do not deploy artifacts produced locally.
 
 ## Core Stack
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
